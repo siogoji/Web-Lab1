@@ -1,0 +1,30 @@
+﻿@model List<Lab1.Models.Train>
+
+<h2>Графік руху потягів</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Номер потягу</th>
+            <th>Місто відправлення</th>
+            <th>Місто прибуття</th>
+            <th>Дата та час відправлення</th>
+            <th>Дата та час прибуття</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var train in Model)
+        {
+            <tr>
+                <td>@train.TrainId</td>
+                <td>@train.DepartureCity</td>
+                <td>@train.ArrivalCity</td>
+                <td>@train.DepartureDateTime</td>
+                <td>@train.ArrivalDateTime</td>
+                <td>
+                    <a asp-controller="Ticket" asp-action="Booking" asp-route-trainId="@train.TrainId" class="btn btn-primary">Замовити квиток</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
